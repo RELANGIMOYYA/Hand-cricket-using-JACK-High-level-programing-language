@@ -1,0 +1,543 @@
+class Main{
+function void main(){
+    var String player_name;
+    var char key;
+    var int count,ComputerWon,UserWon,Target,Score,ComputerThrew,UserThrew,UserWonToss,TossResultOdd,PlayerToss,ComputerToss,TotalTossNumber,TossValue;
+
+    let count = 0;
+    let UserWon = 0;
+    let ComputerWon = 0;
+
+    let player_name = Keyboard.readLine("Enter the name of the player : ");
+    do ClearScreen.clearScreen();
+
+    do Output.moveCursor(10,30);
+    do Output.printString("HI ");
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(".");
+    do Output.println();
+
+    do Output.moveCursor(11,18);
+    do Sys.wait(333);
+    do Output.printString("Welcome to VIRTUAL CRICKET !");
+
+    do Output.moveCursor(15,26);
+    do Sys.wait(333);
+    do Output.printString("press any key");
+
+    let key = Keyboard.readChar();
+    if( key = 13 ){
+    do ClearScreen.clearScreen();
+    }
+    else{ do ClearScreen.clearScreen();}
+
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("INSTRUCTIONS");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Output.printString("1. This game is a digital equilivalent of Hand Cricket.");
+    do Output.println();
+    do Output.printString("2. You play against Computer.");
+    do Output.println();
+    do Output.printString("3. There's toss, then Inning 1 and 2, just like a normal game of cricket.");
+    do Output.println();
+    do Output.printString("4. But, You play the toss to bat. Whoever wins the toss, Bats first.");
+    do Output.println();
+    do Output.printString("5. Every time you and computer throw a number.");
+    do Output.println();
+    do Output.printString("6. If the numbers match, the batsman is OUT.");
+    do Output.println();
+    do Output.printString("7. Else the batsman scores the number they throw.");
+    do Output.println();
+    do Output.printString("8. 0 is a defense for batsman, the bowler cannot throw a 0.");
+    do Output.println();
+    do Output.printString("9. Concept of Multiple Wickets and Overs don't apply.");
+    do Output.println();
+    do Output.printString("10. The concept of score and target is the same as a normal game of cricket.");
+    do Output.println();
+    do Output.println();
+    do Output.printString("That's it! Enjoy the game! ");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+
+    do Sys.wait(333);
+    do Output.printString("press enter");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+
+    do Output.printString("TOSS TIME");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+
+    do Sys.wait(333);
+    let TossValue = Keyboard.readInt("Choose ODD or EVEN (1/0) : ");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+
+    if (TossValue = 1){
+    do Sys.wait(333);
+    do Output.printString("You have choosen ODD");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Computer's call is EVEN");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    }
+
+    else {if (TossValue = 0){
+    do Sys.wait(333);
+    do Output.printString("You have choosen EVEN");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Computer's call is ODD");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    }
+    else {
+    do Sys.wait(333);
+    let TossValue = Keyboard.readInt("Toss value can only be 1 or 0 : ");
+    do Output.println();
+    }
+    }
+
+    do Sys.wait(333);
+    let PlayerToss = Keyboard.readInt("Throw toss (a number between 0 and 6) : ");
+    do Output.println();
+    let ComputerToss = RandomNumberGenerator.rand(1,6,count);
+    let count = count + 1;
+    
+    if(RandomNumberGenerator.lt(PlayerToss,0) | RandomNumberGenerator.gt(PlayerToss,6)){
+    let PlayerToss = Keyboard.readInt("toss can only be a number between 0 and 6, Re-enter : ");
+    }
+
+    do Output.printString(player_name);
+    do Output.printString(" threw : ");
+    do Output.printInt(PlayerToss);
+    do Output.println();
+    
+    do Sys.wait(333);
+    do Output.printString("COMPUTER threw : ");
+    do Output.printInt(ComputerToss);
+    do Output.println();
+
+    do Sys.wait(333);
+    do Output.printInt(PlayerToss);
+    do Output.printString(" + ");
+    do Output.printInt(ComputerToss);
+    do Output.printString(" = ");
+    let TotalTossNumber = PlayerToss + ComputerToss;
+    do Output.printInt(TotalTossNumber);
+    do Output.println();
+    
+    do Sys.wait(333);
+    if(RandomNumberGenerator.isEven(TotalTossNumber)){
+    do Output.printInt(TotalTossNumber);
+    do Output.printString(" is EVEN.");
+    do Output.println();
+    let TossResultOdd = 0;
+    }
+    else {
+    do Sys.wait(333);
+    do Output.printInt(TotalTossNumber);
+    do Output.printString(" is ODD.");
+    do Output.println();
+    let TossResultOdd = 1;
+    }
+
+    do Sys.wait(333);
+    do Output.printString("----------------------------------------------------------------");
+    if(RandomNumberGenerator.eq(TossValue,TossResultOdd)){
+    do Output.printString("Congratulations, ");
+    do Output.printString(player_name);
+    do Output.printString(" WON THE TOSS!");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" BATS FIRST.");
+    let UserWonToss = 1;
+    }
+    else{
+    do Sys.wait(333);
+    do Output.printString("Oops, COMPUTER WON THE TOSS!");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("COMPUTER BATS FIRST");
+    let UserWonToss = 0;
+    }
+
+    do Output.println();
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("press enter");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+
+    if (UserWonToss=1){
+    do Output.moveCursor(0,0);
+    do Sys.wait(333);
+    do Output.printString("1st INNINGS");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" : BATTING");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("COMPUTER : BOWLING");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+
+    let UserThrew = 0;
+    let ComputerThrew = 1;
+    let Score = 0;
+    let Target = 1;
+
+    while (~(RandomNumberGenerator.eq(UserThrew,ComputerThrew))){
+
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    let UserThrew = Keyboard.readInt(" threw (Enter a number between 0 and 6) : ");
+    if(RandomNumberGenerator.lt(UserThrew,0) | RandomNumberGenerator.gt(UserThrew,6)){
+    let UserThrew = Keyboard.readInt("The number should be in between 0 and 6, Re-enter : ");
+    }
+    let ComputerThrew = RandomNumberGenerator.rand(1,6,count);
+    let count = count + 1;
+    do Sys.wait(333);
+    do Output.printString("COMPUTER threw : ");
+    do Output.printInt(ComputerThrew);
+    do Output.println();
+    
+    if (RandomNumberGenerator.eq(UserThrew,ComputerThrew)){
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("THAT's OUT!");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Total 1st innings Score : ");
+    do Output.printInt(Score);
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Computer need ");
+    do Output.printInt(Target);
+    do Output.printString(" runs to win.");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.printString("                                                                ");
+    do Output.printString("                                                                ");
+    do Sys.wait(333);
+    do Output.printString("press enter to start 2nd innings");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+    }
+
+    else{
+    let Score = Score + UserThrew;
+    let Target = Score + 1;
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" scored ");
+    do Output.printInt(UserThrew);
+    do Output.printString(" runs in this ball.");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Total 1st innings score : ");
+    do Output.printInt(Score);
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Output.printString("press enter to play the next ball");
+    let key = Keyboard.readInt("");
+    do Screen.clearScreen();
+    }
+    }// while loop dhi
+
+    do Sys.wait(333);
+    do Output.printString("2nd INNINGS");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" : BOWLING");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("COMPUTER : BATTING");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+
+    let UserThrew = 1;
+    let ComputerThrew = 0;
+    let Score = 0;
+
+    while ((RandomNumberGenerator.lt(Score,Target))&(UserWon = 0)){
+
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    let UserThrew = Keyboard.readInt(" threw (Enter a number between 1 and 6) : ");
+    if(RandomNumberGenerator.lt(UserThrew,1) | RandomNumberGenerator.gt(UserThrew,6)){
+    let UserThrew = Keyboard.readInt("The number should be in between 1 and 6, Re-enter : ");
+    }
+    do Output.println();
+    let ComputerThrew = RandomNumberGenerator.rand(0,6,count);
+    let count = count + 1;
+    do Sys.wait(333);
+    do Output.printString("COMPUTER threw : ");
+    do Output.printInt(ComputerThrew);
+    do Output.println();
+
+    if (RandomNumberGenerator.eq(UserThrew,ComputerThrew)){
+    let UserWon = 1;
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("THAT's OUT!");
+    do Output.println();
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("press enter");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("CONGRATULATIONS ");
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Sys.wait(333);
+    do Output.printString(". YOU WON !!!");
+    do Output.println();
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    }
+
+    else{
+    let Score = Score + ComputerThrew;
+    do Sys.wait(333);
+    do Output.printString("Computer scored ");
+    do Output.printInt(ComputerThrew);
+    do Output.printString(" runs in this ball.");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Total runs chased : ");
+    do Output.printInt(Score);
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("To win : ");
+    do Output.printInt(Target-Score);
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Output.printString("press enter to play the next ball");
+    let key = Keyboard.readInt("");
+    do Screen.clearScreen();
+    }
+    }// while loop dhi
+
+    if(RandomNumberGenerator.gt(Score,Target)){
+    do Sys.wait(333);
+    do Output.printString("press enter");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("OOPS ! COMPUTER WON.");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("AI tho pettukune gallanthey bradhaaarrrr.. It states :)");
+    do Output.println();
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    }
+    }//idh toss user gelisthe vachhina loop ni end chesedhi    
+
+
+
+
+
+
+
+
+
+
+    else{
+    do Output.moveCursor(0,0);
+    do Sys.wait(333);
+    do Output.printString("1st INNINGS");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" : BOWLING");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("COMPUTER : BATTING");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+
+    let UserThrew = 1;
+    let ComputerThrew = 0;
+    let Score = 0;
+    let Target = 1;
+
+    while (~(RandomNumberGenerator.eq(UserThrew,ComputerThrew))){
+
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    let UserThrew = Keyboard.readInt(" threw (Enter a number between 1 and 6) : ");
+    if(RandomNumberGenerator.lt(UserThrew,1) | RandomNumberGenerator.gt(UserThrew,6)){
+    let UserThrew = Keyboard.readInt("The number should be in between 1 and 6, Re-enter : ");
+    }
+    let ComputerThrew = RandomNumberGenerator.rand(0,6,count);
+    let count = count + 1;
+    do Sys.wait(333);
+    do Output.printString("COMPUTER threw : ");
+    do Output.printInt(ComputerThrew);
+    do Output.println();
+    
+    if (RandomNumberGenerator.eq(UserThrew,ComputerThrew)){
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("THAT's OUT!");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Total 1st innings Score : ");
+    do Output.printInt(Score);
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" need ");
+    do Output.printInt(Target);
+    do Output.printString(" runs to win.");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.printString("                                                                ");
+    do Output.printString("                                                                ");
+    do Sys.wait(333);
+    do Output.printString("press enter to start 2nd innings");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+    }
+
+    else{
+    let Score = Score + ComputerThrew;
+    let Target = Score + 1;
+    do Sys.wait(333);
+    do Output.printString("Computer scored ");
+    do Output.printInt(ComputerThrew);
+    do Output.printString(" runs in this ball.");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Total 1st innings score : ");
+    do Output.printInt(Score);
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Output.printString("press enter to play the next ball");
+    let key = Keyboard.readInt("");
+    do Screen.clearScreen();
+    }
+    }// while loop dhi
+
+    do Sys.wait(333);
+    do Output.printString("2nd INNINGS");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" : BATTING");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("COMPUTER : BOWLING");
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+
+    let UserThrew = 0;
+    let ComputerThrew = 1;
+    let Score = 0;
+
+    while ((RandomNumberGenerator.lt(Score,Target))&(ComputerWon = 0)){
+
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    let UserThrew = Keyboard.readInt(" threw (Enter a number between 0 and 6) : ");
+    if(RandomNumberGenerator.lt(UserThrew,0) | RandomNumberGenerator.gt(UserThrew,6)){
+    let UserThrew = Keyboard.readInt("The number should be in between 0 and 6, Re-enter : ");
+    }
+    let ComputerThrew = RandomNumberGenerator.rand(1,6,count);
+    let count = count + 1;
+    do Sys.wait(333);
+    do Output.printString("COMPUTER threw : ");
+    do Output.printInt(ComputerThrew);
+    do Output.println();
+
+    if (RandomNumberGenerator.eq(UserThrew,ComputerThrew)){
+    let ComputerWon = 1;
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("THAT's OUT!");
+    do Output.println();
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("press enter");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("OOPS ! COMPUTER WON.");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("AI tho pettukune gallanthey bradhaaarrrr.. It states :)");
+    do Output.println();
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    }
+
+    else{
+    let Score = Score + UserThrew;
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Output.printString(" scored ");
+    do Output.printInt(UserThrew);
+    do Output.printString(" runs in this ball.");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("Total runs chased : ");
+    do Output.printInt(Score);
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("To win : ");
+    do Output.printInt(Target-Score);
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Output.printString("press enter to play the next ball");
+    let key = Keyboard.readInt("");
+    do Screen.clearScreen();
+    }
+    }// while loop dhi
+
+    if(RandomNumberGenerator.gt(Score,Target)){
+    do Sys.wait(333);
+    do Output.printString("press enter");
+    let key = Keyboard.readInt("");
+    do ClearScreen.clearScreen();
+    do Output.printString("----------------------------------------------------------------");
+    do Output.println();
+    do Sys.wait(333);
+    do Output.printString("CONGRATULATIONS ");
+    do Sys.wait(333);
+    do Output.printString(player_name);
+    do Sys.wait(333);
+    do Output.printString(". YOU WON !!!");
+    do Output.println();
+    do Output.println();
+    do Output.printString("----------------------------------------------------------------");
+    }
+    }//idhi toss computer gelisthe vachhina loop
+    return;
+    }
+}
